@@ -95,7 +95,8 @@ a {
 
 .nav-link:hover,
 .nav-link.active,
-.dropdown summary:hover {
+.dropdown summary:hover,
+.dropdown summary.active {
   color: var(--text);
   background: var(--card);
 }
@@ -221,7 +222,7 @@ a {
   word-spacing: 1px;
 }
 
-/* For Periodic Table Page */
+/* For Periodic Table Project */
 
 .periodic-page .hero {
   margin: 40px 0;
@@ -449,3 +450,5 @@ a {
   background: #64748b33;
   border-color: #64748b;
 }
+
+/* For Time Table Project */
