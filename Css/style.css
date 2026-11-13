@@ -241,7 +241,7 @@ a {
 
 .periodic-table {
   width: 100%;
-  min-width: 1100px;
+  /* min-width: 1100px; */
   table-layout: fixed;
   border-spacing: 5px;
   margin: 0 auto;
@@ -254,7 +254,7 @@ a {
 
 .element {
   position: relative;
-  height: 80px;
+  height: 85px;
   border: 1px solid var(--border);
   border-radius: var(--space-xs);
   background: var(--card);
@@ -300,6 +300,16 @@ a {
   font-size: 9px;
   line-height: 1;
   margin-top: 4px;
+}
+
+.series-placeholder {
+  border-style: dashed;
+}
+
+.series-spacer td {
+  height: 20px;
+  border: 0;
+  padding: 0;
 }
 
 .cat-alkali-metal {
@@ -348,6 +358,94 @@ a {
 }
 
 .cat-unknown {
+  background: #64748b33;
+  border-color: #64748b;
+}
+
+.series-label {
+  color: var(--text-muted);
+  text-align: right;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding-right: 10px !important;
+  background: transparent;
+  border: 0;
+}
+
+.ptable-legend {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--space-sm);
+  padding: var(--space-lg);
+  margin: 0 auto var(--space-xl);
+}
+
+.pt-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.pt-legend-box {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.pt-legend-box.cat-alkali-metal {
+  background: #ef444438;
+  border-color: #ef4444;
+}
+
+.pt-legend-box.cat-alkali-earth {
+  background: #f9731638;
+  border-color: #f97316;
+}
+
+.pt-legend-box.cat-transition-metal {
+  background: #eab30833;
+  border-color: #eab308;
+}
+
+.pt-legend-box.cat-post-transition {
+  background: #22c55e33;
+  border-color: #22c55e;
+}
+
+.pt-legend-box.cat-metalloid {
+  background: #14b8a638;
+  border-color: #14b8a6;
+}
+
+.pt-legend-box.cat-reactive-nonmetal {
+  background: #3b82f638;
+  border-color: #3b82f6;
+}
+
+.pt-legend-box.cat-noble-gas {
+  background: #a855f740;
+  border-color: #a855f7;
+}
+
+.pt-legend-box.cat-lanthanide {
+  background: #ec489938;
+  border-color: #ec4899;
+}
+
+.pt-legend-box.cat-actinide {
+  background: #8b5cf638;
+  border-color: #8b5cf6;
+}
+
+.pt-legend-box.cat-unknown {
   background: #64748b33;
   border-color: #64748b;
 }
