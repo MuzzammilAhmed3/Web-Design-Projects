@@ -1,0 +1,353 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #080e1e;
+  --navbar: #0f182e;
+  --footer: #080c16;
+  --card: #111b30;
+  --border: #23314b;
+  --text: #f2f5ff;
+  --muted: #8997b1;
+  --dim: #64748b;
+  --primary: #7065ff;
+  --primary-hover: #5547dc;
+
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --motion-slow: all 0.3s;
+  --motion-standard: all 0.25s;
+  --motion-fast: all 0.2s;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header {
+  background: var(--navbar);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 750;
+  word-spacing: 2px;
+  letter-spacing: 0.4px;
+  line-height: 1.4;
+  transition: var(--motion-fast) ease;
+}
+
+.brand:hover {
+  color: var(--primary);
+}
+
+.brand-icon {
+  color: var(--primary);
+  font-size: 25px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.nav-link,
+.dropdown summary {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: var(--space-xs);
+  transition: var(--motion-fast) ease;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.dropdown summary:hover {
+  color: var(--text);
+  background: var(--card);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown details {
+  position: relative;
+}
+
+.dropdown summary {
+  list-style: none;
+}
+
+.dropdown-arrow {
+  font-size: 16px;
+  margin-left: 3px;
+  transition: var(--motion-slow) ease-in-out;
+}
+
+.dropdown details[open] .dropdown-arrow {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px #0000004d;
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: var(--space-sm) 12px;
+  border-radius: var(--space-xs);
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  transition: var(--motion-standard) ease;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  color: #fff;
+  background: var(--primary);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15% 0;
+  width: 100%;
+}
+
+.hero h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 600px;
+  text-align: center;
+}
+
+.footer {
+  background: var(--footer);
+  border-top: 1px solid var(--border);
+  padding: 40px var(--space-xl);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.footer-links a {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+  transition: var(--motion-standard) ease-in-out;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-copyright {
+  color: var(--dim);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  word-spacing: 1px;
+}
+
+/* For Periodic Table Page */
+
+.periodic-page .hero {
+  margin: 40px 0;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.periodic-page .hero h1 {
+  font-weight: 800;
+}
+
+.ptable-container {
+  width: 80%;
+  padding: 12px 8px var(--space-lg);
+  margin: 0 auto 28px;
+}
+
+.periodic-table {
+  width: 100%;
+  min-width: 1100px;
+  table-layout: fixed;
+  border-spacing: 5px;
+  margin: 0 auto;
+}
+
+.periodic-table td,
+.periodic-table th {
+  padding: 4px 5px;
+}
+
+.element {
+  position: relative;
+  height: 80px;
+  border: 1px solid var(--border);
+  border-radius: var(--space-xs);
+  background: var(--card);
+  transition: var(--motion-fast) ease;
+}
+
+.element:hover {
+  transform: scale(1.22);
+  z-index: 50;
+  box-shadow: 0 8px 20px #000000b3;
+  border-color: #fff;
+}
+
+.element span {
+  display: block;
+}
+
+.element .atomic-num {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.element .symbol {
+  color: #fff;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 5px 0 3px;
+}
+
+.element .name {
+  font-size: 10px;
+  text-align: center;
+  color: var(--text);
+}
+
+.element .weight {
+  columns: var(--dim);
+  text-align: center;
+  font-size: 9px;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.cat-alkali-metal {
+  background: #ef444438;
+  border-color: #ef4444;
+}
+
+.cat-alkali-earth {
+  background: #f9731638;
+  border-color: #f97316;
+}
+
+.cat-transition-metal {
+  background: #eab30833;
+  border-color: #eab308;
+}
+
+.cat-post-transition {
+  background: #22c55e33;
+  border-color: #22c55e;
+}
+
+.cat-metalloid {
+  background: #14b8a638;
+  border-color: #14b8a6;
+}
+
+.cat-reactive-nonmetal {
+  background: #3b82f638;
+  border-color: #3b82f6;
+}
+
+.cat-noble-gas {
+  background: #a855f740;
+  border-color: #a855f7;
+}
+
+.cat-lanthanide {
+  background: #ec489938;
+  border-color: #ec4899;
+}
+
+.cat-actinide {
+  background: #8b5cf638;
+  border-color: #8b5cf6;
+}
+
+.cat-unknown {
+  background: #64748b33;
+  border-color: #64748b;
+}
