@@ -397,7 +397,7 @@ a {
   height: 18px;
   flex: 0 0 18px;
   border-radius: 4px;
-  border: 1px solid;
+  border: 1px solid var(--border);
 }
 
 .pt-legend-box.cat-alkali-metal {
