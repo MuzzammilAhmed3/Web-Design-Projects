@@ -1,11 +1,479 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Table | WebCraft Lab</title>
+    <link rel="stylesheet" href="../Css/style.css" />
+
+    <style>
+      .timetable-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto 30px;
+        padding: var(--space-lg);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .timetable-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-md);
+        margin-bottom: 22px;
+      }
+
+      .timetable-heading h2 {
+        font-size: 21px;
+        margin-bottom: 5px;
+      }
+
+      .timetable-heading p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .semester-badge {
+        background: #7065ff25;
+        color: #a49cff;
+        border: 1px solid var(--primary);
+        border-radius: 20px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 8px;
+      }
+
+      .timetable {
+        width: 100%;
+        min-width: 900px;
+        border-collapse: separate;
+        border-spacing: 5px;
+        table-layout: fixed;
+      }
+
+      .timetable th,
+      .timetable td {
+        padding: 14px 10px;
+        text-align: center;
+        border-radius: 7px;
+      }
+
+      .timetable thead th {
+        background: #202d48;
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+        border: 1px solid var(--border);
+      }
+
+      .timetable tbody th {
+        background: #202d48;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 700;
+        border: 1px solid var(--border);
+      }
+
+      .timetable td {
+        height: 85px;
+      }
+
+      .subject {
+        border: 1px solid transparent;
+        transition: var(--motion-standard) ease;
+        cursor: pointer;
+      }
+
+      .subject span {
+        display: block;
+        font-size: 13px;
+        font-weight: 750;
+        color: var(--text);
+      }
+
+      .subject small {
+        display: block;
+        margin-top: 7px;
+        color: #cbd5e1;
+        font-size: 11px;
+        font-weight: 500;
+      }
+
+      .subject:hover {
+        transform: scale(1.07);
+        box-shadow: 0 6px 15px #00000066;
+        border-color: #fff;
+        position: relative;
+        z-index: 5;
+      }
+
+      .subject.web,
+      .legend-color.web {
+        background: #3b82f638;
+        border-color: #3b82f6;
+      }
+
+      .subject.programming,
+      .legend-color.programming {
+        background: #a855f738;
+        border-color: #a855f7;
+      }
+
+      .subject.database,
+      .legend-color.database {
+        background: #22c55e38;
+        border-color: #22c55e;
+      }
+
+      .subject.networking,
+      .legend-color.networking {
+        background: #f9731638;
+        border-color: #f97316;
+      }
+
+      .subject.practical,
+      .legend-color.practical {
+        background: #ec489938;
+        border-color: #ec4899;
+      }
+
+      .timetable .break {
+        background: #eab30824;
+        border: 1px dashed #eab308;
+        color: #facc15;
+        vertical-align: middle;
+      }
+
+      .break span {
+        display: block;
+        font-size: 23px;
+        margin-bottom: 8px;
+      }
+
+      .break strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .break small {
+        display: block;
+        margin-top: 7px;
+        font-size: 10px;
+        color: #fde68a;
+      }
+
+      .timetable-legend {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto 35px;
+        padding: var(--space-lg);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+
+      .timetable-legend h2 {
+        font-size: 19px;
+        margin-bottom: 20px;
+      }
+
+      .legend-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 18px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .legend-color {
+        width: 17px;
+        height: 17px;
+        flex: 0 0 17px;
+        border: 1px solid;
+        border-radius: 4px;
+      }
+
+      .legend-color.break-color {
+        background: #eab30838;
+        border-color: #eab308;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header class="header">
+      <nav class="navbar">
+        <a href="../index.html" class="brand">
+          <span class="brand-icon">&#10024;</span>
+          <span>WebCraft Lab</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../about.html" class="nav-link">About</a>
+
+          <div class="dropdown">
+            <details open>
+              <summary class="active">
+                Projects
+                <span class="dropdown-arrow">&#9662;</span>
+              </summary>
+
+              <div class="dropdown-menu">
+                <a href="./form.html">Registration Form</a>
+                <a href="./timetable.html" class="active">TimeTable</a>
+                <a href="./periodic-table.html">Periodic Table</a>
+                <a href="./calculator.html">Calculator</a>
+              </div>
+            </details>
+          </div>
+
+          <a href="../contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content timetable-page">
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Class Time Table</h1>
+        <p>
+          A well-organized weekly class schedule with color-coded subjects, break periods and modern
+          timetable styling.
+        </p>
+      </section>
+
+      <!-- Timetable -->
+      <section class="timetable-container">
+        <div class="timetable-heading">
+          <div>
+            <h2>Weekly Schedule</h2>
+            <p>Academic Session 2026 - 2027</p>
+          </div>
+
+          <span class="semester-badge">Semester 01</span>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="timetable">
+            <thead>
+              <tr>
+                <th>Day / Time</th>
+                <th>08:00 - 09:00</th>
+                <th>09:00 - 10:00</th>
+                <th>10:00 - 11:00</th>
+                <th>11:00 - 12:00</th>
+                <th>12:00 - 01:00</th>
+                <th>01:00 - 02:00</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Monday -->
+              <tr>
+                <th>Monday</th>
+                <td class="subject web">
+                  <span>HTML & CSS</span>
+                  <small>Lab 01</small>
+                </td>
+                <td class="subject programming">
+                  <span>JavaScript</span>
+                  <small>Room 102</small>
+                </td>
+                <td class="subject database">
+                  <span>Database</span>
+                  <small>Room 103</small>
+                </td>
+                <td class="break" rowspan="5">
+                  <span>☕</span>
+                  <strong>Break</strong>
+                  <small>11:00 - 12:00</small>
+                </td>
+                <td class="subject networking">
+                  <span>Networking</span>
+                  <small>Room 104</small>
+                </td>
+                <td class="subject practical">
+                  <span>Practical</span>
+                  <small>Lab 02</small>
+                </td>
+              </tr>
+
+              <!-- Tuesday -->
+              <tr>
+                <th>Tuesday</th>
+                <td class="subject programming">
+                  <span>Programming</span>
+                  <small>Room 101</small>
+                </td>
+                <td class="subject database">
+                  <span>Database</span>
+                  <small>Room 103</small>
+                </td>
+                <td class="subject web">
+                  <span>Web Design</span>
+                  <small>Lab 01</small>
+                </td>
+                <td class="subject practical">
+                  <span>Practical</span>
+                  <small>Lab 02</small>
+                </td>
+                <td class="subject networking">
+                  <span>Networking</span>
+                  <small>Room 104</small>
+                </td>
+              </tr>
+
+              <!-- Wednesday -->
+              <tr>
+                <th>Wednesday</th>
+                <td class="subject database">
+                  <span>Database</span>
+                  <small>Room 103</small>
+                </td>
+                <td class="subject web">
+                  <span>HTML & CSS</span>
+                  <small>Lab 01</small>
+                </td>
+                <td class="subject programming">
+                  <span>JavaScript</span>
+                  <small>Room 102</small>
+                </td>
+                <td class="subject networking">
+                  <span>Networking</span>
+                  <small>Room 104</small>
+                </td>
+                <td class="subject practical">
+                  <span>Practical</span>
+                  <small>Lab 02</small>
+                </td>
+              </tr>
+
+              <!-- Thursday -->
+              <tr>
+                <th>Thursday</th>
+                <td class="subject networking">
+                  <span>Networking</span>
+                  <small>Room 104</small>
+                </td>
+                <td class="subject programming">
+                  <span>Programming</span>
+                  <small>Room 101</small>
+                </td>
+                <td class="subject web">
+                  <span>Web Design</span>
+                  <small>Lab 01</small>
+                </td>
+                <td class="subject database">
+                  <span>Database</span>
+                  <small>Room 103</small>
+                </td>
+                <td class="subject practical">
+                  <span>Practical</span>
+                  <small>Lab 02</small>
+                </td>
+              </tr>
+
+              <!-- Friday -->
+              <tr>
+                <th>Friday</th>
+                <td class="subject practical">
+                  <span>Practical</span>
+                  <small>Lab 02</small>
+                </td>
+                <td class="subject web">
+                  <span>HTML & CSS</span>
+                  <small>Lab 01</small>
+                </td>
+                <td class="subject database">
+                  <span>Database</span>
+                  <small>Room 103</small>
+                </td>
+                <td class="subject programming">
+                  <span>JavaScript</span>
+                  <small>Room 102</small>
+                </td>
+                <td class="subject networking">
+                  <span>Networking</span>
+                  <small>Room 104</small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Subject Legend -->
+      <section class="timetable-legend">
+        <h2>Subject Categories</h2>
+
+        <div class="legend-grid">
+          <div class="legend-item">
+            <span class="legend-color web"></span>
+            <span>Web Development</span>
+          </div>
+
+          <div class="legend-item">
+            <span class="legend-color programming"></span>
+            <span>Programming</span>
+          </div>
+
+          <div class="legend-item">
+            <span class="legend-color database"></span>
+            <span>Database</span>
+          </div>
+
+          <div class="legend-item">
+            <span class="legend-color networking"></span>
+            <span>Networking</span>
+          </div>
+
+          <div class="legend-item">
+            <span class="legend-color practical"></span>
+            <span>Practical / Lab</span>
+          </div>
+
+          <div class="legend-item">
+            <span class="legend-color break-color"></span>
+            <span>Break Time</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="./form.html">Registration Form</a>
+          <a href="./timetable.html">TimeTable</a>
+          <a href="./periodic-table.html">Periodic Table</a>
+          <a href="./calculator.html">Calculator UI</a>
+        </div>
+
+        <div class="footer-copyright">
+          &copy; Pure HTML & CSS Frontend Assignment. Built with clean code & semantic standards.
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
