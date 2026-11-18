@@ -459,7 +459,8 @@ a {
   border-bottom: 1px solid var(--border);
 }
 
-.timetable-container {
+.timetable-container,
+.timetable-legend {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto var(--space-xl);
@@ -550,27 +551,32 @@ a {
   font-weight: 500;
 }
 
-.subject.web {
+.subject.web,
+.legend-color.web {
   background: #3b82f638;
   border-color: #3b82f6;
 }
 
-.subject.programming {
+.subject.programming,
+.legend-color.programming {
   background: #a855f738;
   border-color: #a855f7;
 }
 
-.subject.database {
+.subject.database,
+.legend-color.database {
   background: #22c55e38;
   border-color: #22c55e;
 }
 
-.subject.networking {
+.subject.networking,
+.legend-color.networking {
   background: #f9731638;
   border-color: #f97316;
 }
 
-.subject.practical {
+.subject.practical,
+.legend-color.practical {
   background: #ec489938;
   border-color: #ec4899;
 }
@@ -608,3 +614,38 @@ a {
   color: #fde68a;
 }
 
+.timetable-legend h2 {
+  font-size: 21px;
+  margin-bottom: var(--space-lg);
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.legend-item span:last-child {
+  line-height: 1.4;
+}
+
+.legend-color {
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.legend-color.break-color {
+  background: #eab30838;
+  border-color: #eab308;
+}
