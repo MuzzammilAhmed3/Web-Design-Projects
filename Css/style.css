@@ -468,3 +468,59 @@ a {
   border: 1px solid var(--border);
   border-radius: 12px;
 }
+
+.timetable-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.timetable-heading h2 {
+  font-size: 21px;
+  margin-bottom: var(--space-xs);
+}
+
+.timetable-heading p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.semester-badge {
+  background: #7065ff25;
+  color: #a49cff;
+  border: 1px solid var(--primary);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.table-wrapper {
+  width: 100%;
+}
+
+.timetable {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 5px;
+  table-layout: fixed;
+}
+
+.timetable thead th {
+  background: #202d48;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+}
+
+.timetable th,
+.timetable td {
+  padding: 14px var(--space-sm);
+  text-align: center;
+  border-radius: 8px;
+}
+
