@@ -509,7 +509,15 @@ a {
   table-layout: fixed;
 }
 
-.timetable thead th {
+.timetable th,
+.timetable td {
+  padding: 14px var(--space-sm);
+  text-align: center;
+  border-radius: 8px;
+}
+
+.timetable thead th,
+.timetable tbody th {
   background: #202d48;
   color: var(--text);
   font-size: 14px;
@@ -517,10 +525,86 @@ a {
   border: 1px solid var(--border);
 }
 
-.timetable th,
 .timetable td {
-  padding: 14px var(--space-sm);
-  text-align: center;
-  border-radius: 8px;
+  height: 85px;
+}
+
+.subject {
+  border: 1px solid transparent;
+  transition: var(--motion-standard) ease;
+  cursor: pointer;
+}
+
+.subject span {
+  display: block;
+  font-size: 14px;
+  font-weight: 750;
+  color: var(--text);
+}
+
+.subject small {
+  display: block;
+  margin-top: var(--space-xs);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.subject.web {
+  background: #3b82f638;
+  border-color: #3b82f6;
+}
+
+.subject.programming {
+  background: #a855f738;
+  border-color: #a855f7;
+}
+
+.subject.database {
+  background: #22c55e38;
+  border-color: #22c55e;
+}
+
+.subject.networking {
+  background: #f9731638;
+  border-color: #f97316;
+}
+
+.subject.practical {
+  background: #ec489938;
+  border-color: #ec4899;
+}
+
+.timetable .break {
+  background: #eab30824;
+  border: 1px dashed #eab308;
+  color: #facc15;
+  vertical-align: middle;
+}
+
+.subject:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 14px #00000066;
+  border-color: #fff;
+  position: relative;
+  z-index: 5;
+}
+
+.break span {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.break strong {
+  display: block;
+  font-size: 16px;
+}
+
+.break small {
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  color: #fde68a;
 }
 
