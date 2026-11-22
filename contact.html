@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator | WebCraft Lab</title>
+    <link rel="stylesheet" href="../Css/style.css" />
+    <link rel="stylesheet" href="../sss.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="header">
+      <nav class="navbar container">
+        <a href="../index.html" class="brand">
+          <span class="brand-icon">&#10024;</span>
+          <span>WebCraft Lab</span>
+        </a>
+
+        <!-- Navigation -->
+        <div class="nav-links">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../about.html" class="nav-link">About</a>
+
+          <!-- Custom Dropdown -->
+          <div class="dropdown">
+            <details open>
+              <summary class="active">
+                Projects
+                <span class="dropdown-arrow">&#9662;</span>
+              </summary>
+
+              <div class="dropdown-menu">
+                <a href="./form.html">Registration Form</a>
+                <a href="./timetable.html">TimeTable</a>
+                <a href="./periodic-table.html">Periodic Table</a>
+                <a href="./calculator.html" class="active">Calculator</a>
+              </div>
+            </details>
+          </div>
+
+          <a href="../contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-content calculator-page">
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Modern Calculator</h1>
+        <p>A simple and elegant calculator interface built with HTML and CSS.</p>
+      </section>
+
+      <!-- Calculator -->
+      <section class="calculator-container">
+        <div class="calculator">
+          <!-- Display -->
+          <div class="calculator-display">
+            <div class="previous-value">125 + 75</div>
+            <div class="current-value">200</div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="calculator-buttons">
+            <button class="btn function">AC</button>
+            <button class="btn function">DEL</button>
+            <button class="btn function">%</button>
+            <button class="btn operator">÷</button>
+
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn operator">×</button>
+
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn operator">−</button>
+
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn operator">+</button>
+
+            <button class="btn zero">0</button>
+            <button class="btn">.</button>
+            <button class="btn equals">=</button>
+          </div>
+        </div>
+
+        <p class="calculator-note">Designed with HTML and CSS only.</p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="./form.html">Registration Form</a>
+          <a href="./timetable.html">TimeTable</a>
+          <a href="./periodic-table.html">Periodic Table</a>
+          <a href="./calculator.html">Calculator UI</a>
+        </div>
+
+        <div class="footer-copyright">
+          &copy; Pure HTML & CSS Frontend Assignment. Built with clean code & semantic standards.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
