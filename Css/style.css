@@ -714,3 +714,25 @@ a {
   gap: var(--space-sm);
 }
 
+.btn {
+  height: 62px;
+  border: 1px solid var(--border);
+  border-radius: var(--space-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 21px;
+  font-weight: 600;
+  padding: var(--space-md);
+  transition: var(--motion-fast) ease;
+}
+
+.btn:hover {
+  background: #1d2942;
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
