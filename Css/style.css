@@ -758,3 +758,24 @@ a {
   background: var(--primary);
 }
 
+.btn.equals {
+  color: white;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn.equals:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn.zero {
+  grid-column: span 2;
+}
+
+.calculator-note {
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
