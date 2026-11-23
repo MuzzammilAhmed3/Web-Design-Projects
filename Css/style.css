@@ -736,3 +736,14 @@ a {
   transform: scale(0.95);
 }
 
+.btn.function {
+  color: #ff7777;
+  background: #241d30;
+  border-color: #493047;
+}
+
+.btn.function:hover {
+  background: #39243b;
+  border-color: #ff7777;
+}
+
