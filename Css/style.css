@@ -747,3 +747,14 @@ a {
   border-color: #ff7777;
 }
 
+.btn.operator {
+  color: #a59cff;
+  background: #201f43;
+  border-color: #38336d;
+}
+
+.btn.operator:hover {
+  color: white;
+  background: var(--primary);
+}
+
